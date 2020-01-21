@@ -19,7 +19,6 @@ import com.koolearn.android.kooreader.events.OpenBookEvent;
 import com.koolearn.android.kooreader.fragment.BookMarksFragment;
 import com.koolearn.android.kooreader.fragment.BookNoteFragment;
 import com.koolearn.android.kooreader.fragment.LocalBooksFragment;
-import com.koolearn.android.kooreader.fragment.NetWorkBooksFragment;
 import com.koolearn.android.kooreader.libraryService.BookCollectionShadow;
 import com.koolearn.klibrary.ui.android.R;
 import com.koolearn.kooreader.Paths;
@@ -87,8 +86,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void switchNetWorkBook() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new NetWorkBooksFragment()).commit();
-        mToolbar.setTitle(R.string.network_book);
     }
 
     private void switchToBookNote() {

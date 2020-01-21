@@ -89,17 +89,6 @@ final class NavigationPopup extends ZLApplication.PopupPanel {
         }
     }
 
-    private void gotoPage(int page) {
-        final ZLTextView view = myKooReader.getTextView();
-        if (page == 1) {
-            view.gotoHome();
-        } else {
-            view.gotoPage(page);
-        }
-//        myKooReader.clearTextCaches();
-        myKooReader.getViewWidget().reset();
-        myKooReader.getViewWidget().repaint();
-    }
 
     private void createPanel(KooReader activity, RelativeLayout root) {
         if (myWindow != null && activity == myWindow.getContext()) {
@@ -163,18 +152,16 @@ final class NavigationPopup extends ZLApplication.PopupPanel {
         pre_character.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoPage(pagePosition.Current - 30);
+                gotoParagraph(myKooReader.prevTOCElement());
             }
         });
 
         next_character.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                textView.getModel().getParagraphsNumber();
-                gotoPage(pagePosition.Current + 30);
+                gotoParagraph(myKooReader.nextTOCElement());
             }
         });
-
 
         slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             private void gotoPage(int page) {
@@ -227,6 +214,19 @@ final class NavigationPopup extends ZLApplication.PopupPanel {
                 }
             }
         });
+    }
+
+    private void gotoParagraph(TOCTree tree) {
+        if (tree != null) {
+            final TOCTree.Reference reference = tree.getReference();
+            if (reference != null) {
+                final KooReaderApp kooreader = (KooReaderApp) ZLApplication.Instance();
+                kooreader.addInvisibleBookmark();
+                kooreader.BookTextView.gotoPosition(reference.ParagraphIndex, 0, 0);
+                kooreader.showBookTextView(false);
+                kooreader.storePosition();
+            }
+        }
     }
 
     private void setupNavigation() {

@@ -15,17 +15,23 @@
         android:label="@string/app_name"
         android:logo="@mipmap/ic_launcher"
         android:theme="@style/AppTheme">
+        <activity android:name="com.koolearn.android.kooreader.MainReaderActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="com.koolearn.android.kooreader.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
         <activity
             android:name="com.koolearn.android.kooreader.KooReader"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -34,46 +40,53 @@
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.kooreader.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.kooreader.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:scheme="file" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:scheme="kooreader-action" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.kooreader.action.PLUGIN" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host=""
+                    android:host="yfreader"
                     android:scheme="file" />
                 <data android:pathPattern=".*\\.epub" />
-                <!--<data android:pathPattern=".*\\.doc" />-->
-                <!--<data android:pathPattern=".*\\.oeb" />-->
-                <!--<data android:pathPattern=".*\\.fb2" />-->
-                <!--<data android:pathPattern=".*\\.fb2\\.zip" />-->
-                <!--<data android:pathPattern=".*\\.mobi" />-->
-                <!--<data android:pathPattern=".*\\.prc" />-->
-                <!--<data android:pathPattern=".*\\.txt" />-->
-                <!--<data android:pathPattern=".*\\.rtf" />-->
-                <!--<data android:pathPattern=".*\\.pdf" />-->
-                <!--<data android:pathPattern=".*\\.djvu" />-->
-                <!--<data android:pathPattern=".*\\.cbr" />-->
-                <!--<data android:pathPattern=".*\\.cbz" />-->
+                <!-- <data android:pathPattern=".*\\.doc" /> -->
+                <!-- <data android:pathPattern=".*\\.oeb" /> -->
+                <!-- <data android:pathPattern=".*\\.fb2" /> -->
+                <!-- <data android:pathPattern=".*\\.fb2\\.zip" /> -->
+                <!-- <data android:pathPattern=".*\\.mobi" /> -->
+                <!-- <data android:pathPattern=".*\\.prc" /> -->
+                <!-- <data android:pathPattern=".*\\.txt" /> -->
+                <!-- <data android:pathPattern=".*\\.rtf" /> -->
+                <!-- <data android:pathPattern=".*\\.pdf" /> -->
+                <!-- <data android:pathPattern=".*\\.djvu" /> -->
+                <!-- <data android:pathPattern=".*\\.cbr" /> -->
+                <!-- <data android:pathPattern=".*\\.cbz" /> -->
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
@@ -81,24 +94,26 @@
                     android:mimeType="text/plain"
                     android:scheme="file" />
                 <data android:pathPattern=".*\\.epub" />
-                <!--<data android:pathPattern=".*\\.doc" />-->
-                <!--<data android:pathPattern=".*\\.oeb" />-->
-                <!--<data android:pathPattern=".*\\.fb2" />-->
-                <!--<data android:pathPattern=".*\\.mobi" />-->
-                <!--<data android:pathPattern=".*\\.prc" />-->
-                <!--<data android:pathPattern=".*\\.txt" />-->
-                <!--<data android:pathPattern=".*\\.rtf" />-->
-                <!--<data android:pathPattern=".*\\.pdf" />-->
-                <!--<data android:pathPattern=".*\\.djvu" />-->
-                <!--<data android:pathPattern=".*\\.cbr" />-->
-                <!--<data android:pathPattern=".*\\.cbz" />-->
+                <!-- <data android:pathPattern=".*\\.doc" /> -->
+                <!-- <data android:pathPattern=".*\\.oeb" /> -->
+                <!-- <data android:pathPattern=".*\\.fb2" /> -->
+                <!-- <data android:pathPattern=".*\\.mobi" /> -->
+                <!-- <data android:pathPattern=".*\\.prc" /> -->
+                <!-- <data android:pathPattern=".*\\.txt" /> -->
+                <!-- <data android:pathPattern=".*\\.rtf" /> -->
+                <!-- <data android:pathPattern=".*\\.pdf" /> -->
+                <!-- <data android:pathPattern=".*\\.djvu" /> -->
+                <!-- <data android:pathPattern=".*\\.cbr" /> -->
+                <!-- <data android:pathPattern=".*\\.cbz" /> -->
             </intent-filter>
-            <!--intent-filter>
+            <!--
+            intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <data android:scheme="content" android:pathPattern=".*\\.fb2"/>
-            </intent-filter-->
+            </intent-filter
+            -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -109,38 +124,40 @@
                     android:host=""
                     android:scheme="file" />
                 <data android:mimeType="application/epub+zip" />
-                <!--<data android:mimeType="application/msword" />-->
-                <!--<data android:mimeType="application/x-pilot-prc" />-->
-                <!--<data android:mimeType="application/x-mobipocket-ebook" />-->
-                <!--<data android:mimeType="application/x-fictionbook+xml" />-->
-                <!--<data android:mimeType="application/x-fictionbook" />-->
-                <!--<data android:mimeType="application/pdf" />-->
-                <!--<data android:mimeType="application/x-pdf" />-->
-                <!--<data android:mimeType="application/djvu" />-->
-                <!--<data android:mimeType="application/x-djvu" />-->
-                <!--<data android:mimeType="application/x-cbr" />-->
-                <!--<data android:mimeType="application/x-cbz" />-->
-                <!--<data android:mimeType="image/vnd.djvu" />-->
-                <!--<data android:mimeType="image/x-djvu" />-->
-                <!--<data android:mimeType="text/plain" />-->
+                <!-- <data android:mimeType="application/msword" /> -->
+                <!-- <data android:mimeType="application/x-pilot-prc" /> -->
+                <!-- <data android:mimeType="application/x-mobipocket-ebook" /> -->
+                <!-- <data android:mimeType="application/x-fictionbook+xml" /> -->
+                <!-- <data android:mimeType="application/x-fictionbook" /> -->
+                <!-- <data android:mimeType="application/pdf" /> -->
+                <!-- <data android:mimeType="application/x-pdf" /> -->
+                <!-- <data android:mimeType="application/djvu" /> -->
+                <!-- <data android:mimeType="application/x-djvu" /> -->
+                <!-- <data android:mimeType="application/x-cbr" /> -->
+                <!-- <data android:mimeType="application/x-cbz" /> -->
+                <!-- <data android:mimeType="image/vnd.djvu" /> -->
+                <!-- <data android:mimeType="image/x-djvu" /> -->
+                <!-- <data android:mimeType="text/plain" /> -->
             </intent-filter>
-
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
+
             <intent-filter>
                 <action android:name="android.kooreader.action.CLOSE" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.kooreader.action.PLUGIN_CRASH" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="com.koolearn.android.kooreader.book.BookDetailActivity" />
         <activity
             android:name="com.koolearn.android.kooreader.TOCActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
@@ -150,16 +167,19 @@
             android:process=":preferences">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:scheme="kooreader-preferences" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.kooreader.action.PREFERENCES" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.koolearn.klibrary.ui.android.error.BugReportActivity"
+            android:name=".error.BugReportActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
             android:label="KooReader crash"
@@ -171,6 +191,7 @@
             android:process=":library">
             <intent-filter>
                 <action android:name="android.kooreader.action.LIBRARY" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -180,6 +201,7 @@
             android:theme="@style/KooReader.Dialog">
             <intent-filter>
                 <action android:name="android.fbreader.action.EDIT_BOOKMARK" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -189,6 +211,7 @@
             android:theme="@style/KooReader.Dialog">
             <intent-filter>
                 <action android:name="android.fbreader.action.EDIT_STYLES" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -210,4 +233,5 @@
             </intent-filter>
         </service>
     </application>
+
 </manifest>

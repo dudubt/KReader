@@ -143,6 +143,8 @@ public abstract class ZLTreeAdapter extends BaseAdapter implements AdapterView.O
 		return true;
 	}
 
+	// @yf 目录项点击
+	@Override
 	public final void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		runTreeItem(getItem(position));
 	}

@@ -51,20 +51,9 @@ import java.util.Map;
 import yuku.ambilwarna.widget.AmbilWarnaPrefWidgetView;
 
 public class TOCActivity extends Activity implements IBookCollection.Listener<Book> {
-    private TabLayout mTabLayout;
-    private ViewPager mViewPager;
 
-    private LayoutInflater mInflater;
     private List<String> mTitleList = new ArrayList<>(); // 页卡标题集合
-    private View view1, view2, view3; // 页卡视图
     private List<View> mViewList = new ArrayList<>(); // 页卡视图集合
-
-    private TOCAdapter myAdapter;
-    private ZLTree<?> mySelectedItem;
-    private RelativeLayout rlLayout;
-    private TextView tvBook;
-    private RelativeLayout rlBookmark;
-    private RelativeLayout rlNote;
 
     private static final int OPEN_ITEM_ID = 0;
     private static final int EDIT_ITEM_ID = 1;
@@ -89,26 +78,25 @@ public class TOCActivity extends Activity implements IBookCollection.Listener<Bo
         Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler(this));
 
         setContentView(R.layout.listview_toc);
-        rlLayout = (RelativeLayout) findViewById(R.id.rl_shelf);
-        tvBook = (TextView) findViewById(R.id.tv_book);
-        mViewPager = (ViewPager) findViewById(R.id.vp_view);
-        mTabLayout = (TabLayout) findViewById(R.id.tabs);
-        mInflater = LayoutInflater.from(this);
+        RelativeLayout rlLayout = (RelativeLayout) findViewById(R.id.rl_shelf);
+        TextView tvBook = (TextView) findViewById(R.id.tv_book);
+        ViewPager mViewPager = (ViewPager) findViewById(R.id.vp_view);
+        TabLayout mTabLayout = (TabLayout) findViewById(R.id.tabs);
+        LayoutInflater mInflater = LayoutInflater.from(this);
 
-        view1 = mInflater.inflate(R.layout.item_listview, null);
-        ListView listView = (ListView) view1.findViewById(R.id.listview);
+        View tocView = mInflater.inflate(R.layout.item_listview, null);
+        ListView listView = (ListView) tocView.findViewById(R.id.listview);
         final KooReaderApp kooreader = (KooReaderApp) ZLApplication.Instance();
         final TOCTree root = kooreader.Model.TOCTree;
         tvBook.setText(kooreader.getCurrentBook().getTitle());
 
-        myAdapter = new TOCAdapter(listView, root);
+        TOCAdapter tocAdapter = new TOCAdapter(listView, root);
         TOCTree treeToSelect = kooreader.getCurrentTOCElement();
-        myAdapter.selectItem(treeToSelect); // 设置当前位置
-        mySelectedItem = treeToSelect;
+        tocAdapter.selectItem(treeToSelect); // 设置当前位置
 
-        view2 = mInflater.inflate(R.layout.list_bookmark, null);
-        rlBookmark = (RelativeLayout) view2.findViewById(R.id.rl_bookmark);
-        thisBookListView = (ListView) view2.findViewById(R.id.bookmark_this_book);
+        View bookmarkView = mInflater.inflate(R.layout.list_bookmark, null);
+        RelativeLayout rlBookmark = (RelativeLayout) bookmarkView.findViewById(R.id.rl_bookmark);
+        thisBookListView = (ListView) bookmarkView.findViewById(R.id.bookmark_this_book);
 
         myBook = KooReaderIntents.getBookExtra(getIntent(), myCollection);
         myBookmark = KooReaderIntents.getBookmarkExtra(getIntent());
@@ -124,8 +112,9 @@ public class TOCActivity extends Activity implements IBookCollection.Listener<Bo
         });
 
 
-        view3 = mInflater.inflate(R.layout.list_note, null);
-        rlNote = (RelativeLayout) view3.findViewById(R.id.rl_note);
+        // 页卡视图
+        View noteView = mInflater.inflate(R.layout.list_note, null);
+        RelativeLayout rlNote = (RelativeLayout) noteView.findViewById(R.id.rl_note);
 
         /**
          * 设置背景与阅读背景一致
@@ -177,9 +166,9 @@ public class TOCActivity extends Activity implements IBookCollection.Listener<Bo
         }
 
         //添加页卡视图
-        mViewList.add(view1);
-        mViewList.add(view2);
-        mViewList.add(view3);
+        mViewList.add(tocView);
+        mViewList.add(bookmarkView);
+        mViewList.add(noteView);
         //添加页卡标题
         mTitleList.add("目录");
         mTitleList.add("笔记");
@@ -214,7 +203,8 @@ public class TOCActivity extends Activity implements IBookCollection.Listener<Bo
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            final View view = (convertView != null) ? convertView : LayoutInflater.from(parent.getContext()).inflate(R.layout.toc_tree_item, parent, false);
+            final View view = (convertView != null) ? convertView : LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.toc_tree_item, parent, false);
             final TOCTree tree = (TOCTree) getItem(position);
             ViewUtil.findTextView(view, R.id.toc_tree_item_text).setText(tree.getText());
             return view;

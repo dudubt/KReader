@@ -12,7 +12,6 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -152,10 +151,10 @@ public final class KooReader extends KooReaderMainActivity implements ZLApplicat
         myKooReaderApp.setWindow(this);
         myKooReaderApp.initWindow();
 
-        getWindow().setFlags( //y 全屏
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN // 设置窗体全屏
-        );
+//        getWindow().setFlags( //y 全屏
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN // 设置窗体全屏
+//        );
 
         if (myKooReaderApp.getPopupById(NavigationPopup.ID) == null) {
             new NavigationPopup(myKooReaderApp);
@@ -348,6 +347,7 @@ public final class KooReader extends KooReaderMainActivity implements ZLApplicat
 
     @Override
     protected void onDestroy() {
+        myKooReaderApp.hideActivePopup(); // @yf 退出前关闭弹出窗
         getCollection().unbind();
         super.onDestroy();
     }
@@ -601,4 +601,6 @@ public final class KooReader extends KooReaderMainActivity implements ZLApplicat
             e.printStackTrace();
         }
     }
+
+
 }

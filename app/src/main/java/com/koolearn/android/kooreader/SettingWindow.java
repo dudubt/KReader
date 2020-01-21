@@ -67,11 +67,14 @@ public class SettingWindow extends LinearLayout {
     public void show() {
         post(new Runnable() {
             public void run() {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-                    showAnimatedInternal();
-                } else {
-                    setVisibility(View.VISIBLE);
-                }
+                setVisibility(View.VISIBLE);
+
+                // @yf
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+//                    showAnimatedInternal();
+//                } else {
+//                    setVisibility(View.VISIBLE);
+//                }
             }
         });
     }
@@ -95,13 +98,16 @@ public class SettingWindow extends LinearLayout {
     }
 
     public void hide() {
+
         post(new Runnable() {
             public void run() {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-                    hideAnimatedInternal();
-                } else {
-                    setVisibility(View.GONE);
-                }
+                setVisibility(View.GONE);
+                // @yf
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+//                    hideAnimatedInternal();
+//                } else {
+//                    setVisibility(View.GONE);
+//                }
             }
         });
     }

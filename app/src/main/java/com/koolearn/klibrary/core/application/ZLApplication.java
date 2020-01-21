@@ -33,7 +33,7 @@ public abstract class ZLApplication {
         ourInstance = this;
     }
 
-    protected final void setView(ZLView view) {
+    protected final void setView(ZLView view, boolean resetPopup) {
         if (view != null) {
             myView = view;
             final ZLViewWidget widget = getViewWidget();
@@ -41,8 +41,15 @@ public abstract class ZLApplication {
                 widget.reset();
                 widget.repaint();
             }
-            hideActivePopup();
+
+            if (resetPopup) {
+                hideActivePopup();
+            }
         }
+    }
+
+    protected final void setView(ZLView view) {
+        setView(view, true);
     }
 
     public final ZLView getCurrentView() {

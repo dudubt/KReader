@@ -386,6 +386,10 @@ public final class KooReaderApp extends ZLApplication {
         setView(BookTextView);
     }
 
+    public void showBookTextView(boolean resetPopup) {
+        setView(BookTextView, resetPopup);
+    }
+
     public void onWindowClosing() {
         storePosition();
     }
@@ -575,6 +579,67 @@ public final class KooReaderApp extends ZLApplication {
         }
         return treeToSelect;
     }
+
+    /**
+     * 上一章节
+     */
+    public TOCTree prevTOCElement() {
+        final ZLTextWordCursor cursor = BookTextView.getStartCursor();
+        if (Model == null || cursor == null) {
+            return null;
+        }
+
+        int index = cursor.getParagraphIndex();
+
+        TOCTree currP = null;
+        TOCTree prevP = null;
+        for (TOCTree tree : Model.TOCTree) {
+            final TOCTree.Reference reference = tree.getReference();
+            if (reference == null) {
+                continue;
+            }
+
+            if (reference.ParagraphIndex == index) {
+                return currP;
+            } else if (reference.ParagraphIndex > index) {
+                return prevP;
+            }
+
+            prevP = currP;
+            currP = tree;
+        }
+
+        return null;
+    }
+
+
+    /**
+     * 下一章节
+     */
+    public TOCTree nextTOCElement() {
+        final ZLTextWordCursor cursor = BookTextView.getStartCursor();
+        if (Model == null || cursor == null) {
+            return null;
+        }
+
+        int index = cursor.getParagraphIndex();
+        if (cursor.isEndOfParagraph()) {
+            ++index;
+        }
+
+        for (TOCTree tree : Model.TOCTree) {
+            final TOCTree.Reference reference = tree.getReference();
+            if (reference == null) {
+                continue;
+            }
+            if (reference.ParagraphIndex > index) {
+                return tree;
+            }
+        }
+
+        return null;
+    }
+
 
     public void onBookUpdated(Book book) {
         if (Model == null || Model.Book == null || !Collection.sameBook(Model.Book, book)) {
