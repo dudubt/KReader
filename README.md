@@ -1,14 +1,5 @@
-# 掌读
-* Android阅读器
-* 项目修改自FBreaderJ：https://github.com/geometer/FBReaderJ
-* 当前版本为旧版本，*新版开源计划筹备中*
-* 新版[下载地址](https://www.pgyer.com/Airv)
-
-
-# 项目展示
-![k 1](https://github.com/ydcx/KooReader/blob/master/k1.png)<br/>
-
-![k 2](https://github.com/ydcx/KooReader/blob/master/k2.png)<br/>
+# android ink epub reader
+* fork from https://github.com/yangyueyul/KReader
 
 # 代码框架
 ## Klibrary
