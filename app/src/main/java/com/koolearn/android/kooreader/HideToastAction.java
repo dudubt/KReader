@@ -22,7 +22,7 @@ package com.koolearn.android.kooreader;
 import com.koolearn.kooreader.kooreader.KooReaderApp;
 
 public class HideToastAction extends KooAndroidAction {
-	HideToastAction(KooReader baseActivity, KooReaderApp kooreader) {
+	HideToastAction(ReaderActivity baseActivity, KooReaderApp kooreader) {
 		super(baseActivity, kooreader);
 	}
 

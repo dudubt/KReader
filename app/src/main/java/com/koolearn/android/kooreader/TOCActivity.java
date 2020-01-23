@@ -1,11 +1,13 @@
 package com.koolearn.android.kooreader;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.DisplayMetrics;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -15,7 +17,6 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.koolearn.android.kooreader.api.KooReaderIntents;
@@ -78,14 +79,14 @@ public class TOCActivity extends Activity implements IBookCollection.Listener<Bo
         Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler(this));
 
         setContentView(R.layout.listview_toc);
-        RelativeLayout rlLayout = (RelativeLayout) findViewById(R.id.rl_shelf);
         TextView tvBook = (TextView) findViewById(R.id.tv_book);
         ViewPager mViewPager = (ViewPager) findViewById(R.id.vp_view);
         TabLayout mTabLayout = (TabLayout) findViewById(R.id.tabs);
         LayoutInflater mInflater = LayoutInflater.from(this);
 
-        View tocView = mInflater.inflate(R.layout.item_listview, null);
-        ListView listView = (ListView) tocView.findViewById(R.id.listview);
+        View tocView = mInflater.inflate(R.layout.list_toc, null);
+        ListView listView = (ListView) tocView.findViewById(R.id.listView);
+        
         final KooReaderApp kooreader = (KooReaderApp) ZLApplication.Instance();
         final TOCTree root = kooreader.Model.TOCTree;
         tvBook.setText(kooreader.getCurrentBook().getTitle());
@@ -95,7 +96,6 @@ public class TOCActivity extends Activity implements IBookCollection.Listener<Bo
         tocAdapter.selectItem(treeToSelect); // 设置当前位置
 
         View bookmarkView = mInflater.inflate(R.layout.list_bookmark, null);
-        RelativeLayout rlBookmark = (RelativeLayout) bookmarkView.findViewById(R.id.rl_bookmark);
         thisBookListView = (ListView) bookmarkView.findViewById(R.id.bookmark_this_book);
 
         myBook = KooReaderIntents.getBookExtra(getIntent(), myCollection);
@@ -111,59 +111,13 @@ public class TOCActivity extends Activity implements IBookCollection.Listener<Bo
             }
         });
 
-
         // 页卡视图
         View noteView = mInflater.inflate(R.layout.list_note, null);
-        RelativeLayout rlNote = (RelativeLayout) noteView.findViewById(R.id.rl_note);
 
         /**
          * 设置背景与阅读背景一致
          */
         bgValue = kooreader.ViewOptions.getColorProfile().WallpaperOption.getValue();
-        switch (bgValue) {
-            case "wallpapers/bg_green.png":
-                listView.setBackgroundResource(R.drawable.bg_green);
-                rlLayout.setBackgroundResource(R.drawable.bg_green);
-                mTabLayout.setBackgroundResource(R.drawable.bg_green);
-                rlBookmark.setBackgroundResource(R.drawable.bg_green);
-                rlNote.setBackgroundResource(R.drawable.bg_green);
-                break;
-            case "wallpapers/bg_grey.png":
-                listView.setBackgroundResource(R.drawable.bg_grey);
-                rlLayout.setBackgroundResource(R.drawable.bg_grey);
-                mTabLayout.setBackgroundResource(R.drawable.bg_grey);
-                rlBookmark.setBackgroundResource(R.drawable.bg_grey);
-                rlNote.setBackgroundResource(R.drawable.bg_grey);
-                break;
-            case "wallpapers/bg_night.png":
-                listView.setBackgroundResource(R.drawable.bg_white);
-                rlLayout.setBackgroundResource(R.drawable.bg_white);
-                mTabLayout.setBackgroundResource(R.drawable.bg_white);
-                rlBookmark.setBackgroundResource(R.drawable.bg_white);
-                rlNote.setBackgroundResource(R.drawable.bg_white);
-                break;
-            case "wallpapers/bg_vine_grey.png":
-                listView.setBackgroundResource(R.drawable.bg_vine_grey);
-                rlLayout.setBackgroundResource(R.drawable.bg_vine_grey);
-                mTabLayout.setBackgroundResource(R.drawable.bg_vine_grey);
-                rlBookmark.setBackgroundResource(R.drawable.bg_vine_grey);
-                rlNote.setBackgroundResource(R.drawable.bg_vine_grey);
-                break;
-            case "wallpapers/bg_vine_white.png":
-                listView.setBackgroundResource(R.drawable.bg_vine_white);
-                rlLayout.setBackgroundResource(R.drawable.bg_vine_white);
-                mTabLayout.setBackgroundResource(R.drawable.bg_vine_white);
-                rlBookmark.setBackgroundResource(R.drawable.bg_vine_white);
-                rlNote.setBackgroundResource(R.drawable.bg_vine_white);
-                break;
-            case "wallpapers/bg_white.png":
-                listView.setBackgroundResource(R.drawable.bg_white);
-                rlLayout.setBackgroundResource(R.drawable.bg_white);
-                mTabLayout.setBackgroundResource(R.drawable.bg_white);
-                rlBookmark.setBackgroundResource(R.drawable.bg_white);
-                rlNote.setBackgroundResource(R.drawable.bg_white);
-                break;
-        }
 
         //添加页卡视图
         mViewList.add(tocView);
@@ -195,7 +149,7 @@ public class TOCActivity extends Activity implements IBookCollection.Listener<Bo
     protected void onNewIntent(Intent intent) {
         OrientationUtil.setOrientation(this, intent);
     }
-
+    
     private final class TOCAdapter extends ZLTreeAdapter {
         TOCAdapter(ListView listView, TOCTree root) {
             super(listView, root);
@@ -206,7 +160,18 @@ public class TOCActivity extends Activity implements IBookCollection.Listener<Bo
             final View view = (convertView != null) ? convertView : LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.toc_tree_item, parent, false);
             final TOCTree tree = (TOCTree) getItem(position);
-            ViewUtil.findTextView(view, R.id.toc_tree_item_text).setText(tree.getText());
+    
+            TextView textView = ViewUtil.findTextView(view, R.id.toc_tree_item_text);
+            ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) textView.getLayoutParams();
+            int leftMargin = dp2px(TOCActivity.this, 25);
+            lp.leftMargin = leftMargin * tree.level;
+    
+            String flag = "•  ";
+            if (tree.hasChildren()) {
+                flag = isOpen(tree) ? "▼  " : "▶︎  ";
+            }
+            
+            textView.setText(flag + tree.getText());
             return view;
         }
 
@@ -216,7 +181,7 @@ public class TOCActivity extends Activity implements IBookCollection.Listener<Bo
                 finish();
                 final KooReaderApp kooreader = (KooReaderApp) ZLApplication.Instance();
                 kooreader.addInvisibleBookmark();
-                kooreader.BookTextView.gotoPosition(reference.ParagraphIndex, 0, 0);
+                kooreader.readerView.gotoPosition(reference.ParagraphIndex, 0, 0);
                 kooreader.showBookTextView();
                 kooreader.storePosition();
             }
@@ -373,7 +338,7 @@ public class TOCActivity extends Activity implements IBookCollection.Listener<Bo
         myCollection.saveBookmark(bookmark);
         final Book book = myCollection.getBookById(bookmark.BookId);
         if (book != null) {
-            KooReader.openBookActivity(this, book, bookmark);
+            ReaderActivity.openBookActivity(this, book, bookmark);
         } else {
             UIMessageUtil.showErrorMessage(this, "cannotOpenBook");
         }
@@ -578,5 +543,10 @@ public class TOCActivity extends Activity implements IBookCollection.Listener<Bo
         } else {
             colorView.setBackgroundColor(0);
         }
+    }
+    
+    public static int dp2px(Context context, float dip) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        return (int) (dip * displayMetrics.density + 0.5f);
     }
 }

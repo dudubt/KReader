@@ -20,7 +20,7 @@ import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ProgressBar;
 
-import com.koolearn.android.kooreader.KooReader;
+import com.koolearn.android.kooreader.ReaderActivity;
 import com.koolearn.android.kooreader.RecyclerItemClickListener;
 import com.koolearn.android.kooreader.animation.FlipInLeftYAnimator;
 import com.koolearn.android.kooreader.library.LibraryActivity;
@@ -137,7 +137,7 @@ public class LocalBooksFragment extends Fragment implements SwipeRefreshLayout.O
     private RecyclerItemClickListener.OnItemClickListener onItemClickListener = new RecyclerItemClickListener.OnItemClickListener() {
         @Override
         public void onItemClick(View view, int position) {
-            KooReader.openBookActivity(getActivity(), mLocalBookAdapter.getBook(position), null);
+            ReaderActivity.openBookActivity(getActivity(), mLocalBookAdapter.getBook(position), null);
             getActivity().overridePendingTransition(R.anim.tran_fade_in, R.anim.tran_fade_out);
         }
 

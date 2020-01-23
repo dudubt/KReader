@@ -1,32 +1,14 @@
 package com.koolearn.klibrary.ui.android.view;
 
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.ViewConfiguration;
 
-import com.koolearn.android.kooreader.KooReader;
-import com.koolearn.android.kooreader.KooReaderMainActivity;
-import com.koolearn.android.util.LogUtil;
 import com.koolearn.klibrary.core.application.ZLApplication;
-import com.koolearn.klibrary.core.application.ZLKeyBindings;
 import com.koolearn.klibrary.core.util.SystemInfo;
 import com.koolearn.klibrary.core.view.ZLView;
-import com.koolearn.klibrary.core.view.ZLViewWidget;
 import com.koolearn.klibrary.ui.android.curl.CurlView;
 import com.koolearn.klibrary.ui.android.view.animation.AnimationProvider;
-import com.koolearn.klibrary.ui.android.view.animation.CurlAnimationProvider;
-import com.koolearn.klibrary.ui.android.view.animation.CurlPageProviderImpl;
-import com.koolearn.klibrary.ui.android.view.animation.NoneAnimationProvider;
-import com.koolearn.klibrary.ui.android.view.animation.ShiftAnimationProvider;
-import com.koolearn.klibrary.ui.android.view.animation.SlideAnimationProvider;
 import com.koolearn.kooreader.Paths;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class ZLAndroidCurlWidget extends CurlView {
     public static ZLAndroidCurlWidget Instance() {

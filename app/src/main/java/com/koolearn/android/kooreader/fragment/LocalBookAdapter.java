@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.koolearn.android.kooreader.util.AndroidImageSynchronizer;
-import com.koolearn.android.util.LogUtil;
 import com.koolearn.klibrary.core.image.ZLImage;
 import com.koolearn.klibrary.core.image.ZLImageProxy;
 import com.koolearn.klibrary.ui.android.R;
@@ -23,10 +22,6 @@ import com.koolearn.kooreader.Paths;
 import com.koolearn.kooreader.book.Book;
 import com.koolearn.kooreader.book.CoverUtil;
 import com.koolearn.kooreader.formats.PluginCollection;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -122,37 +117,23 @@ public class LocalBookAdapter extends RecyclerView.Adapter<LocalBookAdapter.View
         final Book book = mBooks.get(position);
         holder.name.setText(book.getTitle());
 
-        DisplayImageOptions options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.drawable.book_cover)
-                .showImageOnFail(R.drawable.book_cover)
-                .cacheInMemory(true)
-                .cacheOnDisk(true)
-                .bitmapConfig(Bitmap.Config.RGB_565)
-                .build();
+//        DisplayImageOptions options = new DisplayImageOptions.Builder()
+//                .showImageOnLoading(R.drawable.book_cover)
+//                .showImageOnFail(R.drawable.book_cover)
+//                .cacheInMemory(true)
+//                .cacheOnDisk(true)
+//                .bitmapConfig(Bitmap.Config.RGB_565)
+//                .build();
 
-        ImageLoader.getInstance().displayImage("file://" + cacheDir + "/" + book.getSortKey() + ".png", holder.icon, options, new ImageLoadingListener() {
-            @Override
-            public void onLoadingStarted(String s, View view) {
-
-            }
-
-            @Override
-            public void onLoadingFailed(String s, View view, FailReason failReason) {
-                setCoverCache(book);
-                LogUtil.i24("");
-
-            }
-
-            @Override
-            public void onLoadingComplete(String s, View view, Bitmap bitmap) {
-
-            }
-
-            @Override
-            public void onLoadingCancelled(String s, View view) {
-
-            }
-        });
+//        ImageLoader.getInstance().displayImage("file://" + cacheDir + "/"
+//                + book.getSortKey() + ".png", holder.icon, options, new ImageLoadingListener() {
+//            @Override
+//            public void onLoadingFailed(String s, View view, FailReason failReason) {
+//                setCoverCache(book);
+//                LogUtil.i24("");
+//            }
+//        });
+        
         holder.itemView.setTag(mBooks.get(position));
     }
 

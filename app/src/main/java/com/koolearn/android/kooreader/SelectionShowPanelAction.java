@@ -22,7 +22,7 @@ package com.koolearn.android.kooreader;
 import com.koolearn.kooreader.kooreader.KooReaderApp;
 
 class SelectionShowPanelAction extends KooAndroidAction {
-	SelectionShowPanelAction(KooReader baseActivity, KooReaderApp kooreader) {
+	SelectionShowPanelAction(ReaderActivity baseActivity, KooReaderApp kooreader) {
 		super(baseActivity, kooreader);
 	}
 

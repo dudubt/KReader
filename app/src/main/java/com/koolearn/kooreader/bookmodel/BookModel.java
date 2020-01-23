@@ -153,7 +153,7 @@ public final class BookModel {
     }
 
     public void leaveTOCItem() {
-        myCurrentTree = myCurrentTree.Parent;
+        myCurrentTree = myCurrentTree.parent;
         if (myCurrentTree == null) {
             myCurrentTree = TOCTree;
         }

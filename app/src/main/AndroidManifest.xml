@@ -15,10 +15,9 @@
         android:label="@string/app_name"
         android:logo="@mipmap/ic_launcher"
         android:theme="@style/AppTheme">
-        <activity android:name="com.koolearn.android.kooreader.MainReaderActivity">
+        <activity android:name="com.koolearn.android.kooreader.BookshelfActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -33,7 +32,7 @@
 <!--            </intent-filter>-->
         </activity>
         <activity
-            android:name="com.koolearn.android.kooreader.KooReader"
+            android:name="com.koolearn.android.kooreader.ReaderActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -90,7 +89,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data
-                    android:host=""
+                    android:host="yfreader"
                     android:mimeType="text/plain"
                     android:scheme="file" />
                 <data android:pathPattern=".*\\.epub" />

@@ -31,7 +31,7 @@ import com.koolearn.klibrary.text.view.ZLTextVideoRegionSoul;
 import com.koolearn.kooreader.kooreader.KooReaderApp;
 
 class OpenVideoAction extends KooAndroidAction {
-	OpenVideoAction(KooReader baseActivity, KooReaderApp kooreader) {
+	OpenVideoAction(ReaderActivity baseActivity, KooReaderApp kooreader) {
 		super(baseActivity, kooreader);
 	}
 

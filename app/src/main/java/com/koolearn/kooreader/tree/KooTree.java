@@ -95,7 +95,7 @@ public abstract class KooTree extends ZLTree<KooTree> implements Comparable<KooT
 		LogInfo.i("Kootree");
 
 		if (myKey == null) {
-			myKey = new Key(Parent != null ? Parent.getUniqueKey() : null, getStringId());
+			myKey = new Key(parent != null ? parent.getUniqueKey() : null, getStringId());
 		}
 		return myKey;
 	}
@@ -197,8 +197,8 @@ public abstract class KooTree extends ZLTree<KooTree> implements Comparable<KooT
 	public final ZLImage getCover() {
 		if (!myCoverRequested) {
 			myCover = createCover();
-			if (myCover == null && Parent != null && canUseParentCover()) {
-				myCover = Parent.getCover();
+			if (myCover == null && parent != null && canUseParentCover()) {
+				myCover = parent.getCover();
 			}
 			myCoverRequested = true;
 		}

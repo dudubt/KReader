@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
-import com.koolearn.android.kooreader.KooReader;
+import com.koolearn.android.kooreader.ReaderActivity;
 import com.koolearn.android.kooreader.api.KooReaderIntents;
 import com.koolearn.android.kooreader.libraryService.BookCollectionShadow;
 import com.koolearn.android.kooreader.tree.TreeActivity;
@@ -93,7 +93,7 @@ public class LibraryActivity extends TreeActivity<LibraryTree> implements IBookC
     }
 
     private void showBookInfo(Book book) { //y 直接打开书籍，不再打开书籍详情 ---> BookInfoActivity
-        KooReader.openBookActivity(LibraryActivity.this, book, null);
+        ReaderActivity.openBookActivity(LibraryActivity.this, book, null);
         overridePendingTransition(R.anim.tran_fade_in, R.anim.tran_fade_out);
 //        final Intent intent = new Intent(getApplicationContext(), BookInfoActivity.class);
 //        KooReaderIntents.putBookExtra(intent, book);

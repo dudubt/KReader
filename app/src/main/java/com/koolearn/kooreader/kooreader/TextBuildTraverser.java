@@ -21,13 +21,13 @@ package com.koolearn.kooreader.kooreader;
 
 import com.koolearn.klibrary.text.view.ZLTextControlElement;
 import com.koolearn.klibrary.text.view.ZLTextTraverser;
-import com.koolearn.klibrary.text.view.ZLTextView;
+import com.koolearn.klibrary.text.view.ZLReaderView;
 import com.koolearn.klibrary.text.view.ZLTextWord;
 
 class TextBuildTraverser extends ZLTextTraverser {
 	protected final StringBuilder myBuffer = new StringBuilder();
 
-	TextBuildTraverser(ZLTextView view) {
+	TextBuildTraverser(ZLReaderView view) {
 		super(view);
 	}
 

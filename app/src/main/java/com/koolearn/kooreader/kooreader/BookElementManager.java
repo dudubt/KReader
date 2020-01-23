@@ -29,12 +29,12 @@ import java.util.Map;
 import java.util.Timer;
 
 class BookElementManager extends ExtensionElementManager {
-	private final KooView myView;
+	private final ReaderView myView;
 	private final Runnable myScreenRefresher;
 	private final Map<Map<String,String>,List<BookElement>> myCache = new HashMap<Map<String,String>,List<BookElement>>();
 	private Timer myTimer;
 
-	BookElementManager(final KooView view) {
+	BookElementManager(final ReaderView view) {
 		myView = view;
 		myScreenRefresher = new Runnable() {
 			public void run() {

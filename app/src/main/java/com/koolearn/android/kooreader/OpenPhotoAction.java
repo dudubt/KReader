@@ -29,7 +29,7 @@ public class OpenPhotoAction extends KooAndroidAction {
     private static RelativeLayout relativeLayout;
     private static float mScaleD;
 
-    OpenPhotoAction(KooReader baseActivity, KooReaderApp kooreader, ViewGroup container) {
+    OpenPhotoAction(ReaderActivity baseActivity, KooReaderApp kooreader, ViewGroup container) {
         super(baseActivity, kooreader);
         myActivity = baseActivity;
         mContainer = container;

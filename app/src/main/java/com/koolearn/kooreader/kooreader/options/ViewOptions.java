@@ -22,7 +22,7 @@ package com.koolearn.kooreader.kooreader.options;
 import com.koolearn.klibrary.core.library.ZLibrary;
 import com.koolearn.klibrary.text.view.style.ZLTextStyleCollection;
 
-import com.koolearn.kooreader.kooreader.KooView;
+import com.koolearn.kooreader.kooreader.ReaderView;
 import com.koolearn.klibrary.core.options.ZLBooleanOption;
 import com.koolearn.klibrary.core.options.ZLIntegerRangeOption;
 import com.koolearn.klibrary.core.options.ZLStringOption;
@@ -62,7 +62,7 @@ public class ViewOptions {
 		SpaceBetweenColumns =
 			new ZLIntegerRangeOption("Options", "SpaceBetweenColumns", 0, 300, 3 * horMargin);
 		ScrollbarType =
-			new ZLIntegerRangeOption("Options", "ScrollbarType", 0, 4, KooView.SCROLLBAR_SHOW_AS_FOOTER);
+			new ZLIntegerRangeOption("Options", "ScrollbarType", 0, 4, ReaderView.SCROLLBAR_SHOW_AS_FOOTER);
 		FooterHeight =
 			new ZLIntegerRangeOption("Options", "FooterHeight", 8, dpi / 8, dpi / 12);
 		ColorProfileName = new ZLStringOption("Options", "ColorProfile", ColorProfile.DAY);

@@ -4,9 +4,9 @@ import com.koolearn.kooreader.kooreader.KooAction;
 import com.koolearn.kooreader.kooreader.KooReaderApp;
 
 abstract class KooAndroidAction extends KooAction {
-	protected final KooReader BaseActivity;
+	protected final ReaderActivity BaseActivity;
 
-	KooAndroidAction(KooReader baseActivity, KooReaderApp kooreader) {
+	KooAndroidAction(ReaderActivity baseActivity, KooReaderApp kooreader) {
 		super(kooreader);
 		BaseActivity = baseActivity;
 	}

@@ -158,17 +158,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         new Thread() {
             @Override
             public void run() {
-                copyFonts("hksv.ttf");
-                copyFonts("wryh.ttf");
+//                copyFonts("wryh.ttf"); // @yf 安装字体
 //                copyEpub("harry.epub");
-//                copyEpub("abeaver.epub");
-//                copyEpub("silverchair.epub");
-
-//                copyEpub("ExaminationCloze.doc");
-//                copyEpub("function.doc");
-//                copyEpubToSdCard("TheSilverChair.epub");
-//                copyEpubToSdCard("ExaminationCloze.doc");
-//                copyEpubToSdCard("function.doc");
             }
         }.start();
     }
@@ -299,7 +290,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void openBook(com.koolearn.kooreader.book.Book data) {
-        KooReader.openBookActivity(this, data, null);
+        ReaderActivity.openBookActivity(this, data, null);
         overridePendingTransition(R.anim.tran_fade_in, R.anim.tran_fade_out);
     }
 

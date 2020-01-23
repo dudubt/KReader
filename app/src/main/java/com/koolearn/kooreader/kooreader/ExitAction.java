@@ -26,7 +26,7 @@ class ExitAction extends KooAction {
 
 	@Override
 	protected void run(Object ... params) {
-		if (Reader.getCurrentView() != Reader.BookTextView) {
+		if (Reader.getCurrentView() != Reader.readerView) {
 			Reader.showBookTextView();
 		} else {
 			Reader.closeWindow();

@@ -23,7 +23,7 @@ import com.koolearn.klibrary.core.util.ZLColor;
 import com.koolearn.klibrary.text.view.ZLTextFixedPosition;
 import com.koolearn.klibrary.text.view.ZLTextPosition;
 import com.koolearn.klibrary.text.view.ZLTextSimpleHighlighting;
-import com.koolearn.klibrary.text.view.ZLTextView;
+import com.koolearn.klibrary.text.view.ZLReaderView;
 import com.koolearn.kooreader.book.HighlightingStyle;
 import com.koolearn.kooreader.book.IBookCollection;
 
@@ -44,7 +44,7 @@ public final class BookmarkHighlighting extends ZLTextSimpleHighlighting {
 		return bookmark;
 	}
 
-	BookmarkHighlighting(ZLTextView view, IBookCollection collection, com.koolearn.kooreader.book.Bookmark bookmark) {
+	BookmarkHighlighting(ZLReaderView view, IBookCollection collection, com.koolearn.kooreader.book.Bookmark bookmark) {
 		super(view, startPosition(bookmark), endPosition(bookmark));
 		Collection = collection;
 		Bookmark = bookmark;

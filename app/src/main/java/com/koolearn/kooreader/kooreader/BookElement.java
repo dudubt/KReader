@@ -28,12 +28,12 @@ import com.koolearn.klibrary.text.view.ZLTextElementArea;
 import com.koolearn.klibrary.text.view.ZLTextHyperlink;
 
 public final class BookElement extends ExtensionElement {
-	private final KooView myView;
+	private final ReaderView myView;
 
 //	private OPDSBookItem myItem;
 //	private NetworkImage myCover;
 
-	BookElement(KooView view) {
+	BookElement(ReaderView view) {
 		LogInfo.i("BookElement");
 
 		myView = view;

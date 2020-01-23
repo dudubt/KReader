@@ -24,6 +24,7 @@ import com.koolearn.klibrary.core.options.ZLIntegerRangeOption;
 import com.koolearn.klibrary.core.options.ZLStringOption;
 import com.koolearn.klibrary.core.view.ZLView;
 import com.koolearn.klibrary.core.options.ZLEnumOption;
+import com.koolearn.klibrary.core.view.ZLViewEnums;
 
 public class PageTurningOptions {
 	public static enum FingerScrollingType {
@@ -33,12 +34,14 @@ public class PageTurningOptions {
 		new ZLEnumOption<FingerScrollingType>("Scrolling", "Finger", FingerScrollingType.byTapAndFlick);
 
 	public final ZLEnumOption<ZLView.Animation> Animation =
-		new ZLEnumOption<ZLView.Animation>("Scrolling", "Animation", ZLView.Animation.slide);
+		new ZLEnumOption<ZLView.Animation>("Scrolling", "Animation", ZLView.Animation.none); // @yf 默认翻页动画
+	
 	public final ZLIntegerRangeOption AnimationSpeed =
 		new ZLIntegerRangeOption("Scrolling", "AnimationSpeed", 1, 10, 2);
 
 	public final ZLBooleanOption Horizontal =
 		new ZLBooleanOption("Scrolling", "Horizontal", true);
+	
 	public final ZLStringOption TapZoneMap =
 		new ZLStringOption("Scrolling", "TapZoneMap", "");
 }

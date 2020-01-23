@@ -25,17 +25,17 @@ import android.text.ClipboardManager;
 import com.koolearn.android.util.UIMessageUtil;
 import com.koolearn.klibrary.core.resources.ZLResource;
 import com.koolearn.kooreader.kooreader.KooReaderApp;
-import com.koolearn.kooreader.kooreader.KooView;
+import com.koolearn.kooreader.kooreader.ReaderView;
 import com.koolearn.kooreader.util.TextSnippet;
 
 public class SelectionCopyAction extends KooAndroidAction {
-	SelectionCopyAction(KooReader baseActivity, KooReaderApp kooreader) {
+	SelectionCopyAction(ReaderActivity baseActivity, KooReaderApp kooreader) {
 		super(baseActivity, kooreader);
 	}
 
 	@Override
 	protected void run(Object... params) {
-		final KooView kooView = Reader.getTextView();
+		final ReaderView kooView = Reader.getTextView();
 		final TextSnippet snippet = kooView.getSelectedSnippet();
 		if (snippet == null) {
 			return;

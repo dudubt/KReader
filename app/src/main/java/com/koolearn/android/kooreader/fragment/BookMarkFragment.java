@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.koolearn.android.kooreader.KooReader;
+import com.koolearn.android.kooreader.ReaderActivity;
 import com.koolearn.android.kooreader.api.KooReaderIntents;
 import com.koolearn.android.kooreader.bookmark.EditBookmarkActivity;
 import com.koolearn.android.kooreader.libraryService.BookCollectionShadow;
@@ -198,7 +198,7 @@ public class BookMarkFragment extends Fragment implements IBookCollection.Listen
         myCollection.saveBookmark(bookmark);
         final Book book = myCollection.getBookById(bookmark.BookId);
         if (book != null) {
-            KooReader.openBookActivity(getActivity(), book, bookmark);
+            ReaderActivity.openBookActivity(getActivity(), book, bookmark);
         } else {
             UIMessageUtil.showErrorMessage(getActivity(), "cannotOpenBook");
         }

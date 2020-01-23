@@ -23,16 +23,16 @@ import com.koolearn.klibrary.text.view.ZLTextRegion;
 import com.koolearn.klibrary.text.view.ZLTextWordRegionSoul;
 
 class MoveCursorAction extends KooAction {
-	private final KooView.Direction myDirection;
+	private final ReaderView.Direction myDirection;
 
-	MoveCursorAction(KooReaderApp fbreader, KooView.Direction direction) {
+	MoveCursorAction(KooReaderApp fbreader, ReaderView.Direction direction) {
 		super(fbreader);
 		myDirection = direction;
 	}
 
 	@Override
 	protected void run(Object... params) {
-		final KooView kooView = Reader.getTextView();
+		final ReaderView kooView = Reader.getTextView();
 		ZLTextRegion region = kooView.getOutlinedRegion();
 		final ZLTextRegion.Filter filter =
 			(region != null && region.getSoul() instanceof ZLTextWordRegionSoul)
@@ -44,10 +44,10 @@ class MoveCursorAction extends KooAction {
 		} else {
 			switch (myDirection) {
 				case down:
-					kooView.turnPage(true, KooView.ScrollingMode.SCROLL_LINES, 1);
+					kooView.turnPage(true, ReaderView.ScrollingMode.SCROLL_LINES, 1);
 					break;
 				case up:
-					kooView.turnPage(false, KooView.ScrollingMode.SCROLL_LINES, 1);
+					kooView.turnPage(false, ReaderView.ScrollingMode.SCROLL_LINES, 1);
 					break;
 			}
 		}

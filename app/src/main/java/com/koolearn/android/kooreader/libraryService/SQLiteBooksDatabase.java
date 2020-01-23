@@ -715,7 +715,7 @@ final class SQLiteBooksDatabase extends BooksDatabase {
         }
         synchronized (statement) {
             statement.bindString(1, fileInfo.Name);
-            final FileInfo parent = fileInfo.Parent;
+            final FileInfo parent = fileInfo.parent;
             if (parent != null) {
                 statement.bindLong(2, parent.Id);
             } else {

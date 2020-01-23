@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.koolearn.android.kooreader.SettingWindow xmlns:android="http://schemas.android.com/apk/res/android"
+<com.koolearn.android.kooreader.SettingWindow
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/setting_panel"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
     android:layout_centerHorizontal="true"
-    android:background="#DF111111"
+    android:layout_margin="3dp"
+    android:background="@drawable/bg_common_panel"
     android:focusable="false"
     android:orientation="vertical"
     android:visibility="visible">
@@ -22,8 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
-            android:drawableLeft="@drawable/light_small"
-            android:textColor="@android:color/darker_gray" />
+            android:drawableLeft="@drawable/light_small" />
 
         <SeekBar
             android:id="@+id/light_slider"
@@ -41,8 +42,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:drawableLeft="@drawable/lights"
-            android:textColor="@android:color/darker_gray" />
+            android:drawableLeft="@drawable/lights" />
     </RelativeLayout>
 
 
@@ -60,7 +60,6 @@
             android:background="@drawable/page_whiteline"
             android:gravity="center"
             android:text="A-"
-            android:textColor="#FFFFFF"
             android:textSize="16sp" />
 
         <TextView
@@ -70,7 +69,6 @@
             android:layout_toRightOf="@id/tv_font_minus"
             android:gravity="center"
             android:text="36"
-            android:textColor="#FFFFFF"
             android:textSize="13sp" />
 
         <TextView
@@ -81,7 +79,6 @@
             android:background="@drawable/page_whiteline"
             android:gravity="center"
             android:text="A+"
-            android:textColor="#FFFFFF"
             android:textSize="16sp" />
 
 
@@ -93,7 +90,6 @@
             android:background="@drawable/page_whiteline"
             android:gravity="center"
             android:text="L+"
-            android:textColor="#FFFFFF"
             android:textSize="16sp" />
 
         <TextView
@@ -103,7 +99,6 @@
             android:layout_toLeftOf="@id/tv_lineSpace_add"
             android:gravity="center"
             android:text="36"
-            android:textColor="#FFFFFF"
             android:textSize="13sp" />
 
         <TextView
@@ -115,7 +110,6 @@
             android:background="@drawable/page_whiteline"
             android:gravity="center"
             android:text="L-"
-            android:textColor="#FFFFFF"
             android:textSize="16sp" />
     </RelativeLayout>
 
@@ -125,7 +119,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/tv_page_simulation"
@@ -136,8 +131,7 @@
             android:background="@drawable/page_whiteline"
             android:gravity="center"
             android:text="仿真"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_page_cover"
@@ -149,8 +143,7 @@
             android:background="@drawable/page_whiteline"
             android:gravity="center"
             android:text="覆盖"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_page_slide"
@@ -162,8 +155,7 @@
             android:background="@drawable/page_whiteline"
             android:gravity="center"
             android:text="滑动"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_page_none"
@@ -175,8 +167,7 @@
             android:background="@drawable/page_whiteline"
             android:gravity="center"
             android:text="无"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
 
@@ -185,7 +176,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/bg_white"
@@ -196,7 +188,6 @@
             android:layout_weight="1"
             android:background="@drawable/bg_white"
             android:gravity="center"
-            android:textColor="#FFFFFF"
             android:textSize="15sp" />
 
         <TextView
@@ -208,7 +199,6 @@
             android:layout_weight="1"
             android:background="@drawable/bg_grey"
             android:gravity="center"
-            android:textColor="#FFFFFF"
             android:textSize="15sp" />
 
         <TextView
@@ -220,7 +210,6 @@
             android:layout_weight="1"
             android:background="@drawable/bg_vine_grey"
             android:gravity="center"
-            android:textColor="#FFFFFF"
             android:textSize="15sp" />
 
         <TextView
@@ -233,7 +222,6 @@
             android:layout_weight="1"
             android:background="@drawable/bg_vine_white"
             android:gravity="center"
-            android:textColor="#FFFFFF"
             android:textSize="15sp" />
 
         <TextView
@@ -246,7 +234,6 @@
             android:layout_weight="1"
             android:background="@drawable/bg_green"
             android:gravity="center"
-            android:textColor="#FFFFFF"
             android:textSize="15sp" />
 
         <TextView
@@ -259,7 +246,6 @@
             android:layout_weight="1"
             android:background="@drawable/bg_night"
             android:gravity="center"
-            android:textColor="#FFFFFF"
             android:textSize="15sp" />
     </LinearLayout>
 
@@ -278,7 +264,6 @@
             android:layout_alignParentLeft="true"
             android:background="@drawable/er"
             android:gravity="center"
-            android:textColor="#FFFFFF"
             android:textSize="15sp" />
 
         <TextView
@@ -289,7 +274,6 @@
             android:layout_toRightOf="@+id/btn_page_simulation"
             android:background="@drawable/ep"
             android:gravity="center"
-            android:textColor="#FFFFFF"
             android:textSize="15sp" />
 
         <TextView
@@ -300,7 +284,6 @@
             android:layout_marginLeft="16dp"
             android:background="@drawable/en"
             android:gravity="center"
-            android:textColor="#FFFFFF"
             android:textSize="15sp" />
 
         <TextView
@@ -311,7 +294,6 @@
             android:layout_toRightOf="@+id/btn_page_cover"
             android:background="@drawable/ev"
             android:gravity="center"
-            android:textColor="#FFFFFF"
             android:textSize="15sp" />
 
         <TextView
@@ -322,8 +304,7 @@
             android:background="@drawable/page_whitelinedark"
             android:gravity="center"
             android:text="左右"
-            android:textColor="#DAc8c8c8"
-            android:textSize="13sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_setting"

@@ -2,6 +2,7 @@ package com.koolearn.android.kooreader.api;
 
 import android.content.Intent;
 
+import com.koolearn.klibrary.ui.android.BuildConfig;
 import com.koolearn.kooreader.book.AbstractBook;
 import com.koolearn.kooreader.book.AbstractSerializer;
 import com.koolearn.kooreader.book.Book;
@@ -9,7 +10,7 @@ import com.koolearn.kooreader.book.Bookmark;
 import com.koolearn.kooreader.book.SerializerUtil;
 
 public abstract class KooReaderIntents {
-	public static final String DEFAULT_PACKAGE = "com.koolearn.klibrary.ui.android";
+	public static final String DEFAULT_PACKAGE = BuildConfig.APPLICATION_ID;
 
 	public interface Action {
 		String API                              = "android.kooreader.action.API";

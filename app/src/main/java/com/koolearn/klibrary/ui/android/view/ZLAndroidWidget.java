@@ -10,8 +10,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 
-import com.koolearn.android.kooreader.KooReader;
-import com.koolearn.android.kooreader.KooReaderMainActivity;
+import com.koolearn.android.kooreader.ReaderActivity;
+import com.koolearn.android.kooreader.BaseReaderActivity;
 import com.koolearn.klibrary.core.application.ZLApplication;
 import com.koolearn.klibrary.core.application.ZLKeyBindings;
 import com.koolearn.klibrary.core.util.SystemInfo;
@@ -80,8 +80,8 @@ public class ZLAndroidWidget extends View implements ZLViewWidget, View.OnLongCl
     @Override
     public void onDraw(final Canvas canvas) {
         final Context context = getContext();
-        if (context instanceof KooReader) {
-            ((KooReader) context).createWakeLock();
+        if (context instanceof ReaderActivity) {
+            ((ReaderActivity) context).createWakeLock();
         } else {
             System.err.println("A surprise: view's context is not an KooReader");
         }
@@ -530,7 +530,7 @@ public class ZLAndroidWidget extends View implements ZLViewWidget, View.OnLongCl
         }
 
         final Context context = getContext();
-        if (!(context instanceof KooReaderMainActivity)) {
+        if (!(context instanceof BaseReaderActivity)) {
             return;
         }
 
@@ -545,7 +545,7 @@ public class ZLAndroidWidget extends View implements ZLViewWidget, View.OnLongCl
             myColorLevel = 0x60 + (0xFF - 0x60) * Math.max(percent, 0) / 25;
         }
 
-        final KooReaderMainActivity activity = (KooReaderMainActivity) context;
+        final BaseReaderActivity activity = (BaseReaderActivity) context;
         activity.getZLibrary().ScreenBrightnessLevelOption.setValue(percent);
         activity.setScreenBrightnessSystem(level);
         if (oldColorLevel != myColorLevel) {
@@ -560,10 +560,10 @@ public class ZLAndroidWidget extends View implements ZLViewWidget, View.OnLongCl
         }
 
         final Context context = getContext();
-        if (!(context instanceof KooReaderMainActivity)) {
+        if (!(context instanceof BaseReaderActivity)) {
             return 50;
         }
-        final float level = ((KooReaderMainActivity) context).getScreenBrightnessSystem();
+        final float level = ((BaseReaderActivity) context).getScreenBrightnessSystem();
         // level = .01f + (percent - 25) * .99f / 75;
         return 25 + (int) ((level - .01f) * 75 / .99f);
     }

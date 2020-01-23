@@ -39,7 +39,7 @@ class SelectionPopup extends PopupPanel implements View.OnClickListener {
 	}
 
 	@Override
-	public void createControlPanel(KooReader activity, RelativeLayout root) {
+	public void createControlPanel(ReaderActivity activity, RelativeLayout root) {
 		if (myWindow != null && activity == myWindow.getContext()) {
 			return;
 		}

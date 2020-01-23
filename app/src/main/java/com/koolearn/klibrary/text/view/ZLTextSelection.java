@@ -15,7 +15,7 @@ class ZLTextSelection extends ZLTextHighlighting {
 		}
 	}
 
-	private final ZLTextView myView;
+	private final ZLReaderView myView;
 
 	private ZLTextRegion.Soul myLeftMostRegionSoul;
 	private ZLTextRegion.Soul myRightMostRegionSoul;
@@ -25,7 +25,7 @@ class ZLTextSelection extends ZLTextHighlighting {
 
 	private Scroller myScroller;
 
-	ZLTextSelection(ZLTextView view) {
+	ZLTextSelection(ZLReaderView view) {
 		myView = view;
 	}
 
@@ -168,13 +168,13 @@ class ZLTextSelection extends ZLTextHighlighting {
 
 		if (myCursorInMovement == SelectionCursor.Which.Right) {
 			if (hasPartAfterPage(page)) {
-				myView.turnPage(true, ZLTextView.ScrollingMode.SCROLL_LINES, 1);
+				myView.turnPage(true, ZLReaderView.ScrollingMode.SCROLL_LINES, 1);
 				myView.Application.getViewWidget().reset();
 				myView.preparePaintInfo();
 			}
 		} else {
 			if (hasPartBeforePage(page)) {
-				myView.turnPage(false, ZLTextView.ScrollingMode.SCROLL_LINES, 1);
+				myView.turnPage(false, ZLReaderView.ScrollingMode.SCROLL_LINES, 1);
 				myView.Application.getViewWidget().reset();
 				myView.preparePaintInfo();
 			}
@@ -303,7 +303,7 @@ class ZLTextSelection extends ZLTextHighlighting {
 		}
 
 		public void run() {
-			myView.turnPage(myScrollForward, ZLTextView.ScrollingMode.SCROLL_LINES, 1);
+			myView.turnPage(myScrollForward, ZLReaderView.ScrollingMode.SCROLL_LINES, 1);
 			myView.preparePaintInfo();
 			expandTo(myPage, myX, myY);
 			myView.Application.getViewWidget().reset();

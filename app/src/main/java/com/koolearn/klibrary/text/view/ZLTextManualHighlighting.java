@@ -3,7 +3,7 @@ package com.koolearn.klibrary.text.view;
 import com.koolearn.klibrary.core.util.ZLColor;
 
 class ZLTextManualHighlighting extends ZLTextSimpleHighlighting {
-	ZLTextManualHighlighting(ZLTextView view, ZLTextPosition start, ZLTextPosition end) {
+	ZLTextManualHighlighting(ZLReaderView view, ZLTextPosition start, ZLTextPosition end) {
 		super(view, start, end);
 	}
 

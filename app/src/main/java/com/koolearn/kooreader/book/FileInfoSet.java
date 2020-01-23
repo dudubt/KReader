@@ -62,7 +62,7 @@ public final class FileInfoSet {
     private void load(Collection<FileInfo> infos) {
         for (FileInfo info : infos) {
             // 更新两个属性,后面的方法会调用
-            myInfosByPair.put(new Pair(info.Name, info.Parent), info);
+            myInfosByPair.put(new Pair(info.Name, info.parent), info);
             myInfosById.put(info.Id, info);
             // 对象创建好后回到createBook BookDataBase
         }
@@ -73,7 +73,7 @@ public final class FileInfoSet {
             public void run() {
                 for (FileInfo info : myInfosToRemove) {
                     myDatabase.removeFileInfo(info.Id);
-                    myInfosByPair.remove(new Pair(info.Name, info.Parent));
+                    myInfosByPair.remove(new Pair(info.Name, info.parent));
                 }
                 myInfosToRemove.clear();
                 for (FileInfo info : myInfosToSave) {
@@ -161,7 +161,7 @@ public final class FileInfoSet {
         ZLFile file = myFilesByInfo.get(info);
         if (file == null) {
             // 进入递归调用
-            file = ZLFile.createFile(getFile(info.Parent), info.Name);
+            file = ZLFile.createFile(getFile(info.parent), info.Name);
             myFilesByInfo.put(info, file);
         }
         return file;

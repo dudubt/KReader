@@ -35,7 +35,7 @@ public abstract class ZLTreeAdapter extends BaseAdapter implements AdapterView.O
 		}
 		while (!myOpenItems.contains(tree)) {
 			myOpenItems.add(tree);
-			tree = tree.Parent;
+			tree = tree.parent;
 		}
 	}
 
@@ -59,10 +59,10 @@ public abstract class ZLTreeAdapter extends BaseAdapter implements AdapterView.O
 		if (tree == null) {
 			return;
 		}
-		openTree(tree.Parent);
+		openTree(tree.parent);
 		int index = 0;
 		while (true) {
-			ZLTree<?> parent = tree.Parent;
+			ZLTree<?> parent = tree.parent;
 			if (parent == null) {
 				break;
 			}

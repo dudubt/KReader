@@ -1,9 +1,9 @@
 package com.koolearn.klibrary.text.view;
 
 public abstract class ZLTextTraverser {
-	private final ZLTextView myView;
+	private final ZLReaderView myView;
 
-	protected ZLTextTraverser(ZLTextView view) {
+	protected ZLTextTraverser(ZLReaderView view) {
 		myView = view;
 	}
 

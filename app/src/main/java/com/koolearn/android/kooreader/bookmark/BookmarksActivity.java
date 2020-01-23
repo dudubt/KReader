@@ -35,7 +35,7 @@ import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.koolearn.android.kooreader.KooReader;
+import com.koolearn.android.kooreader.ReaderActivity;
 import com.koolearn.android.kooreader.api.KooReaderIntents;
 import com.koolearn.android.kooreader.libraryService.BookCollectionShadow;
 import com.koolearn.android.util.OrientationUtil;
@@ -320,7 +320,7 @@ public class BookmarksActivity extends Activity implements IBookCollection.Liste
         myCollection.saveBookmark(bookmark);
         final Book book = myCollection.getBookById(bookmark.BookId);
         if (book != null) {
-            KooReader.openBookActivity(this, book, bookmark);
+            ReaderActivity.openBookActivity(this, book, bookmark);
         } else {
             UIMessageUtil.showErrorMessage(this, "cannotOpenBook");
         }

@@ -96,7 +96,7 @@ public abstract class TreeActivity<T extends KooTree> extends ListActivity {
                 }
             }
             if (parent == null && myCurrentTree != null) {
-                parent = myCurrentTree.Parent;
+                parent = myCurrentTree.parent;
             }
             if (parent != null && !isTreeInvisible(parent)) {
                 openTree(parent, myCurrentTree, false);

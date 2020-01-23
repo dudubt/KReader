@@ -34,7 +34,7 @@ import com.koolearn.kooreader.book.Bookmark;
 import com.koolearn.kooreader.kooreader.KooReaderApp;
 
 public class SelectionBookmarkAction extends KooAndroidAction {
-    SelectionBookmarkAction(KooReader baseApplication, KooReaderApp kooreader) {
+    SelectionBookmarkAction(ReaderActivity baseApplication, KooReaderApp kooreader) {
         super(baseApplication, kooreader);
     }
 

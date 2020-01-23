@@ -1,11 +1,11 @@
 package com.koolearn.klibrary.text.view;
 
 public abstract class ZLTextSimpleHighlighting extends ZLTextHighlighting {
-	protected final ZLTextView View;
+	protected final ZLReaderView View;
 	private final ZLTextPosition myStartPosition;
 	private final ZLTextPosition myEndPosition;
 
-	protected ZLTextSimpleHighlighting(ZLTextView view, ZLTextPosition start, ZLTextPosition end) {
+	protected ZLTextSimpleHighlighting(ZLReaderView view, ZLTextPosition start, ZLTextPosition end) {
 		View = view;
 		myStartPosition = new ZLTextFixedPosition(start);
 		myEndPosition = new ZLTextFixedPosition(end);

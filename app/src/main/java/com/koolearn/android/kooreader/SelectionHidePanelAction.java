@@ -22,7 +22,7 @@ package com.koolearn.android.kooreader;
 import com.koolearn.kooreader.kooreader.KooReaderApp;
 
 class SelectionHidePanelAction extends KooAndroidAction {
-	SelectionHidePanelAction(KooReader baseActivity, KooReaderApp kooreader) {
+	SelectionHidePanelAction(ReaderActivity baseActivity, KooReaderApp kooreader) {
 		super(baseActivity, kooreader);
 	}
 

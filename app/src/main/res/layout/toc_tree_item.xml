@@ -14,10 +14,6 @@
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="5dp"
-        android:ellipsize="marquee"
-        android:marqueeRepeatLimit="marquee_forever"
-        android:drawableLeft="@android:drawable/divider_horizontal_dark"
-        android:text="第2节: 巴菲特的房子"
-        android:textColor="#333333"
+        android:ellipsize="end"
         android:textSize="15sp" />
 </LinearLayout>

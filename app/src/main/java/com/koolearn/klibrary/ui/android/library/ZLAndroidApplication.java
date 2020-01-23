@@ -4,8 +4,6 @@ import android.app.Application;
 
 import com.koolearn.android.kooreader.config.ConfigShadow;
 import com.koolearn.klibrary.ui.android.image.ZLAndroidImageManager;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 public abstract class ZLAndroidApplication extends Application {
 	private ZLAndroidLibrary myLibrary;
@@ -36,12 +34,7 @@ public abstract class ZLAndroidApplication extends Application {
 	 */
 	private void initImageLoader() {
 		// 个性化参数配置
-//        File file = FileStorageUtils.getImageLoaderCacheDir(this);
-//        file = new ImageLoaderConfiguration.Builder(this).memoryCacheExtraOptio ns(480, 800).threadPoolSize(20).threadPriority(3).denyCacheImageMultipleSizesInMemory().memoryCache(new UsingFreqLimitedMemoryCache(2097152)).discCacheSize(52428800).discCacheFileNameGenerator(new Md5FileNameGenerator()).tasksProcessingOrder(QueueProcessingType.LIFO).discCacheFileCount(100).discCache(new UnlimitedDiscCache((File) file)).defaultDisplayImageOptions(DisplayImageOptions.createSimple()).imageDownloader(new OkHttpImageDownLoader(this, 5000, 30000)).writeDebugLogs().build();
-//        ImageLoader.getInstance().init((ImageLoaderConfiguration) file);
-		//创建默认的ImageLoader配置参数
-		ImageLoaderConfiguration configuration = ImageLoaderConfiguration.createDefault(this);
-		//Initialize ImageLoader with configuration.
-		ImageLoader.getInstance().init(configuration);
+//		ImageLoaderConfiguration configuration = ImageLoaderConfiguration.createDefault(this);
+//		ImageLoader.getInstance().init(configuration);
 	}
 }

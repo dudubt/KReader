@@ -21,7 +21,7 @@ package com.koolearn.kooreader.book;
 
 import com.koolearn.klibrary.core.resources.ZLResource;
 import com.koolearn.klibrary.text.view.ZLTextElement;
-import com.koolearn.klibrary.text.view.ZLTextView;
+import com.koolearn.klibrary.text.view.ZLReaderView;
 import com.koolearn.klibrary.text.view.ZLTextWordCursor;
 import com.koolearn.klibrary.text.view.ZLTextWord;
 
@@ -39,7 +39,7 @@ public abstract class BookmarkUtil {
 		return ZLResource.resource("style").getValue().replace("%s", String.valueOf(style.Id));
 	}
 
-	public static void findEnd(Bookmark bookmark, ZLTextView view) {
+	public static void findEnd(Bookmark bookmark, ZLReaderView view) {
 		if (bookmark.getEnd() != null) {
 			return;
 		}

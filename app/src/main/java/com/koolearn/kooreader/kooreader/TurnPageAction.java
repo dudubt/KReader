@@ -45,17 +45,17 @@ class TurnPageAction extends KooAction {
 			final int x = (Integer)params[0];
 			final int y = (Integer)params[1];
 			Reader.getViewWidget().startAnimatedScrolling(
-				myForward ? KooView.PageIndex.next : KooView.PageIndex.previous,
+				myForward ? ReaderView.PageIndex.next : ReaderView.PageIndex.previous,
 				x, y,
 				preferences.Horizontal.getValue()
-					? KooView.Direction.rightToLeft : KooView.Direction.up,
+					? ReaderView.Direction.rightToLeft : ReaderView.Direction.up,
 				preferences.AnimationSpeed.getValue()
 			);
 		} else {
 			Reader.getViewWidget().startAnimatedScrolling(
-				myForward ? KooView.PageIndex.next : KooView.PageIndex.previous,
+				myForward ? ReaderView.PageIndex.next : ReaderView.PageIndex.previous,
 				preferences.Horizontal.getValue()
-					? KooView.Direction.rightToLeft : KooView.Direction.up,
+					? ReaderView.Direction.rightToLeft : ReaderView.Direction.up,
 				preferences.AnimationSpeed.getValue()
 			);
 		}

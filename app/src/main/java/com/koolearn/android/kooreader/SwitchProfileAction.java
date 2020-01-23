@@ -5,7 +5,7 @@ import com.koolearn.kooreader.kooreader.KooReaderApp;
 class SwitchProfileAction extends KooAndroidAction {
 	private String myProfileName;
 
-	SwitchProfileAction(KooReader baseActivity, KooReaderApp fbreader, String profileName) {
+	SwitchProfileAction(ReaderActivity baseActivity, KooReaderApp fbreader, String profileName) {
 		super(baseActivity, fbreader);
 		myProfileName = profileName;
 	}

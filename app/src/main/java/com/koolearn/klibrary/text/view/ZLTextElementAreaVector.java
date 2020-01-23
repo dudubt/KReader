@@ -173,7 +173,7 @@ final class ZLTextElementAreaVector {
 		return pair;
 	}
 
-	protected ZLTextRegion nextRegion(ZLTextRegion currentRegion, ZLTextView.Direction direction, ZLTextRegion.Filter filter) {
+	protected ZLTextRegion nextRegion(ZLTextRegion currentRegion, ZLReaderView.Direction direction, ZLTextRegion.Filter filter) {
 		synchronized (myAreas) {
 			if (myElementRegions.isEmpty()) {
 				return null;

@@ -9,7 +9,7 @@ import com.koolearn.kooreader.kooreader.KooReaderApp;
 import com.koolearn.kooreader.util.AutoTextSnippet;
 
 class ProcessHyperlinkAction extends KooAndroidAction {
-    ProcessHyperlinkAction(KooReader baseActivity, KooReaderApp kooreader) {
+    ProcessHyperlinkAction(ReaderActivity baseActivity, KooReaderApp kooreader) {
         super(baseActivity, kooreader);
     }
 

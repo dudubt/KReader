@@ -23,12 +23,12 @@ import com.koolearn.klibrary.core.options.ZLBooleanOption;
 import com.koolearn.klibrary.core.options.ZLColorOption;
 import com.koolearn.klibrary.core.options.ZLEnumOption;
 import com.koolearn.klibrary.core.util.ZLColor;
-import com.koolearn.kooreader.kooreader.KooView;
+import com.koolearn.kooreader.kooreader.ReaderView;
 
 public class ImageOptions {
 	public final ZLColorOption ImageViewBackground;
 
-	public final ZLEnumOption<KooView.ImageFitting> FitToScreen;
+	public final ZLEnumOption<ReaderView.ImageFitting> FitToScreen;
 	public static enum TapActionEnum {
 		doNothing, selectImage, openImageView
 	}
@@ -39,7 +39,7 @@ public class ImageOptions {
 		ImageViewBackground =
 			new ZLColorOption("Colors", "ImageViewBackground", new ZLColor(255, 255, 255));
 		FitToScreen =
-			new ZLEnumOption<KooView.ImageFitting>("Options", "FitImagesToScreen", KooView.ImageFitting.covers);
+			new ZLEnumOption<ReaderView.ImageFitting>("Options", "FitImagesToScreen", ReaderView.ImageFitting.covers);
 		TapAction =
 			new ZLEnumOption<TapActionEnum>("Options", "ImageTappingAction", TapActionEnum.openImageView);
 		MatchBackground =

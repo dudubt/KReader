@@ -21,27 +21,24 @@ final class SettingPopup extends ZLApplication.PopupPanel implements View.OnClic
     final static String ID = "SettingPopup";
 
     private volatile SettingWindow myWindow;
-    private volatile KooReader myActivity;
+    private volatile ReaderActivity myActivity;
     private volatile RelativeLayout myRoot;
     private boolean myIsBrightnessAdjustmentInProgress;
     private final KooReaderApp myKooReader;
-    private TextView tvFontMinus, tvFontSize, tvFontAdd;
-    private TextView tvLightMinus, tvLightAdd;
-    private TextView tvLineSpaceAdd, tvLineSpaceSize, tvLineSpaceMinus;
+    private TextView tvFontSize;
+    private TextView tvLineSpaceSize;
     private ZLIntegerRangeOption integerRangeOption;
     private SeekBar slider;
-    private TextView tvPageMode, tvSetting;
+    private TextView tvPageMode;
     private TextView tvPageSimulation, tvPageCover, tvPageSlide, tvPageNone;
-    private TextView bgWhite, bgGrey, bgVineGrey, bgVineWhite, bgGreen, bgNight;
     private TextView tvAlignLeft, tvAlignRight, tvAlignCenter, tvAlign;
-    private boolean pageMode;
-
+    
     SettingPopup(KooReaderApp kooReader) {
         super(kooReader);
         myKooReader = kooReader;
     }
 
-    public void setPanelInfo(KooReader activity, RelativeLayout root) {
+    public void setPanelInfo(ReaderActivity activity, RelativeLayout root) {
         myActivity = activity;
         myRoot = root;
     }
@@ -83,14 +80,14 @@ final class SettingPopup extends ZLApplication.PopupPanel implements View.OnClic
         }
     }
 
-    private void createPanel(KooReader activity, RelativeLayout root) {
+    private void createPanel(ReaderActivity activity, RelativeLayout root) {
         if (myWindow != null && activity == myWindow.getContext()) {
             return;
         }
         activity.getLayoutInflater().inflate(R.layout.setting_panel, root);
         myWindow = (SettingWindow) root.findViewById(R.id.setting_panel);
         integerRangeOption = myKooReader.ViewOptions.getTextStyleCollection().getBaseStyle().FontSizeOption; // 字体
-        pageMode = myKooReader.PageTurningOptions.Horizontal.getValue(); // 当前翻页方式
+        boolean pageMode = myKooReader.PageTurningOptions.Horizontal.getValue(); // 当前翻页方式
         tvFontSize = (TextView) myWindow.findViewById(R.id.tv_font_size);
         tvLineSpaceSize = (TextView) myWindow.findViewById(R.id.tv_lineSpace_size);
         tvPageMode = (TextView) myWindow.findViewById(R.id.tv_page_mode);
@@ -102,23 +99,23 @@ final class SettingPopup extends ZLApplication.PopupPanel implements View.OnClic
         updateFontSize(); // 设置当前字号
         updateLineSpaceSize(); // 当前行间距
         slider = (SeekBar) myWindow.findViewById(R.id.light_slider);
-        tvLightMinus = (TextView) myWindow.findViewById(R.id.tv_light_minus);
-        tvLightAdd = (TextView) myWindow.findViewById(R.id.tv_light_add);
-        tvFontMinus = (TextView) myWindow.findViewById(R.id.tv_font_minus);
-        tvFontAdd = (TextView) myWindow.findViewById(R.id.tv_font_add);
-        tvLineSpaceAdd = (TextView) myWindow.findViewById(R.id.tv_lineSpace_add);
-        tvLineSpaceMinus = (TextView) myWindow.findViewById(R.id.tv_lineSpace_minus);
-        tvSetting = (TextView) myWindow.findViewById(R.id.tv_setting);
+        TextView tvLightMinus = (TextView) myWindow.findViewById(R.id.tv_light_minus);
+        TextView tvLightAdd = (TextView) myWindow.findViewById(R.id.tv_light_add);
+        TextView tvFontMinus = (TextView) myWindow.findViewById(R.id.tv_font_minus);
+        TextView tvFontAdd = (TextView) myWindow.findViewById(R.id.tv_font_add);
+        TextView tvLineSpaceAdd = (TextView) myWindow.findViewById(R.id.tv_lineSpace_add);
+        TextView tvLineSpaceMinus = (TextView) myWindow.findViewById(R.id.tv_lineSpace_minus);
+        TextView tvSetting = (TextView) myWindow.findViewById(R.id.tv_setting);
         tvPageSimulation = (TextView) myWindow.findViewById(R.id.tv_page_simulation);
         tvPageCover = (TextView) myWindow.findViewById(R.id.tv_page_cover);
         tvPageSlide = (TextView) myWindow.findViewById(R.id.tv_page_slide);
         tvPageNone = (TextView) myWindow.findViewById(R.id.tv_page_none);
-        bgWhite = (TextView) myWindow.findViewById(R.id.bg_white);
-        bgGrey = (TextView) myWindow.findViewById(R.id.bg_grey);
-        bgVineGrey = (TextView) myWindow.findViewById(R.id.bg_vine_grey);
-        bgVineWhite = (TextView) myWindow.findViewById(R.id.bg_vine_white);
-        bgGreen = (TextView) myWindow.findViewById(R.id.bg_green);
-        bgNight = (TextView) myWindow.findViewById(R.id.bg_night);
+        TextView bgWhite = (TextView) myWindow.findViewById(R.id.bg_white);
+        TextView bgGrey = (TextView) myWindow.findViewById(R.id.bg_grey);
+        TextView bgVineGrey = (TextView) myWindow.findViewById(R.id.bg_vine_grey);
+        TextView bgVineWhite = (TextView) myWindow.findViewById(R.id.bg_vine_white);
+        TextView bgGreen = (TextView) myWindow.findViewById(R.id.bg_green);
+        TextView bgNight = (TextView) myWindow.findViewById(R.id.bg_night);
         tvAlignLeft = (TextView) myWindow.findViewById(R.id.tv_align_left);
         tvAlignRight = (TextView) myWindow.findViewById(R.id.tv_align_right);
         tvAlignCenter = (TextView) myWindow.findViewById(R.id.tv_align_center);
@@ -245,7 +242,7 @@ final class SettingPopup extends ZLApplication.PopupPanel implements View.OnClic
             case R.id.tv_setting:
                 Application.hideActivePopup();
                 final Intent intent = new Intent(myActivity.getApplicationContext(), PreferenceActivity.class);
-                OrientationUtil.startActivityForResult(myActivity, intent, KooReader.REQUEST_PREFERENCES);
+                OrientationUtil.startActivityForResult(myActivity, intent, ReaderActivity.REQUEST_PREFERENCES);
                 return;
             case R.id.tv_page_simulation: //y 仿真
                 clearSelecte();

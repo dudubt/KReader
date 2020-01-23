@@ -21,13 +21,13 @@ package com.koolearn.kooreader.kooreader;
 
 import com.koolearn.klibrary.text.view.ZLTextControlElement;
 import com.koolearn.klibrary.text.view.ZLTextTraverser;
-import com.koolearn.klibrary.text.view.ZLTextView;
+import com.koolearn.klibrary.text.view.ZLReaderView;
 import com.koolearn.klibrary.text.view.ZLTextWord;
 
 class WordCountTraverser extends ZLTextTraverser {
 	protected int myCount;
 
-	WordCountTraverser(ZLTextView view) {
+	WordCountTraverser(ZLReaderView view) {
 		super(view);
 	}
 

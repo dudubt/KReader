@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.koolearn.android.kooreader.api.KooReaderIntents;
 import com.koolearn.android.util.OrientationUtil;
 import com.koolearn.klibrary.core.application.ZLApplication;
-import com.koolearn.klibrary.text.view.ZLTextView;
+import com.koolearn.klibrary.text.view.ZLReaderView;
 import com.koolearn.klibrary.text.view.ZLTextWordCursor;
 import com.koolearn.klibrary.ui.android.R;
 import com.koolearn.kooreader.bookmodel.TOCTree;
@@ -23,12 +23,12 @@ final class NavigationPopup extends ZLApplication.PopupPanel {
     final static String ID = "NavigationPopup";
 
     private volatile NavigationWindow myWindow;
-    private volatile KooReader myActivity;
+    private volatile ReaderActivity myActivity;
     private volatile RelativeLayout myRoot;
     private ZLTextWordCursor myStartPosition;
     private final KooReaderApp myKooReader;
     private volatile boolean myIsInProgress;
-    private ZLTextView.PagePosition pagePosition;
+    private ZLReaderView.PagePosition pagePosition;
     private TextView light;
     private TextView dark;
 
@@ -37,7 +37,7 @@ final class NavigationPopup extends ZLApplication.PopupPanel {
         myKooReader = kooReader;
     }
 
-    public void setPanelInfo(KooReader activity, RelativeLayout root) {
+    public void setPanelInfo(ReaderActivity activity, RelativeLayout root) {
         myActivity = activity;
         myRoot = root;
     }
@@ -90,7 +90,7 @@ final class NavigationPopup extends ZLApplication.PopupPanel {
     }
 
 
-    private void createPanel(KooReader activity, RelativeLayout root) {
+    private void createPanel(ReaderActivity activity, RelativeLayout root) {
         if (myWindow != null && activity == myWindow.getContext()) {
             return;
         }
@@ -165,7 +165,7 @@ final class NavigationPopup extends ZLApplication.PopupPanel {
 
         slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             private void gotoPage(int page) {
-                final ZLTextView view = myKooReader.getTextView();
+                final ZLReaderView view = myKooReader.getTextView();
                 if (page == 1) {
                     view.gotoHome();
                 } else {
@@ -174,7 +174,7 @@ final class NavigationPopup extends ZLApplication.PopupPanel {
             }
 
             private void gotoPagePer(int page) {
-                final ZLTextView view = myKooReader.getTextView();
+                final ZLReaderView view = myKooReader.getTextView();
 //                if (page == 0) {
 //                    view.gotoHome();
 //                } else {
@@ -222,7 +222,7 @@ final class NavigationPopup extends ZLApplication.PopupPanel {
             if (reference != null) {
                 final KooReaderApp kooreader = (KooReaderApp) ZLApplication.Instance();
                 kooreader.addInvisibleBookmark();
-                kooreader.BookTextView.gotoPosition(reference.ParagraphIndex, 0, 0);
+                kooreader.readerView.gotoPosition(reference.ParagraphIndex, 0, 0);
                 kooreader.showBookTextView(false);
                 kooreader.storePosition();
             }
@@ -233,7 +233,7 @@ final class NavigationPopup extends ZLApplication.PopupPanel {
         final SeekBar slider = (SeekBar) myWindow.findViewById(R.id.navigation_slider);
         final TextView text = (TextView) myWindow.findViewById(R.id.navigation_text);
 
-        final ZLTextView textView = myKooReader.getTextView();
+        final ZLReaderView textView = myKooReader.getTextView();
         pagePosition = textView.pagePosition();
 
         String progress = textView.pagePositionPec();
