@@ -85,13 +85,14 @@ public class TOCActivity extends Activity implements IBookCollection.Listener<Bo
         LayoutInflater mInflater = LayoutInflater.from(this);
 
         View tocView = mInflater.inflate(R.layout.list_toc, null);
-        ListView listView = (ListView) tocView.findViewById(R.id.listView);
-        
+        final ListView tocListView = (ListView) tocView.findViewById(R.id.listView);
+
+
         final KooReaderApp kooreader = (KooReaderApp) ZLApplication.Instance();
         final TOCTree root = kooreader.Model.TOCTree;
         tvBook.setText(kooreader.getCurrentBook().getTitle());
 
-        TOCAdapter tocAdapter = new TOCAdapter(listView, root);
+        final TOCAdapter tocAdapter = new TOCAdapter(tocListView, root);
         TOCTree treeToSelect = kooreader.getCurrentTOCElement();
         tocAdapter.selectItem(treeToSelect); // 设置当前位置
 
@@ -137,6 +138,21 @@ public class TOCActivity extends Activity implements IBookCollection.Listener<Bo
         mViewPager.setAdapter(mAdapter); // 给ViewPager设置适配器
         mTabLayout.setupWithViewPager(mViewPager); // 将TabLayout和ViewPager关联起来。
         mTabLayout.setTabsFromPagerAdapter(mAdapter); // 给Tabs设置适配器
+
+        findViewById(R.id.btn_prev_page).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tocAdapter.prevPage();
+            }
+        });
+
+        findViewById(R.id.btn_next_page).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tocAdapter.nextPage();
+            }
+        });
+
     }
 
     @Override

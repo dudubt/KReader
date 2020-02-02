@@ -25,9 +25,9 @@ public class NoScrollListView extends ListView {
     }
     
     public boolean dispatchTouchEvent(MotionEvent ev) {
-//        if (ev.getAction() == MotionEvent.ACTION_MOVE) {
-//            return true; // 禁止滑动
-//        }
+        if (ev.getAction() == MotionEvent.ACTION_MOVE) {
+            return true; // 禁止滑动
+        }
         return super.dispatchTouchEvent(ev);
         
     }

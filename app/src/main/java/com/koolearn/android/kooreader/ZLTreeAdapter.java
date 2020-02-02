@@ -13,13 +13,13 @@ import java.util.HashSet;
 
 
 public abstract class ZLTreeAdapter extends BaseAdapter implements AdapterView.OnItemClickListener, View.OnCreateContextMenuListener {
-	private final ListView myParent;
+	private final ListView mListView;
 	private final ZLTree<?> Root;
 	private ZLTree<?>[] myItems;
 	private final HashSet<ZLTree<?>> myOpenItems = new HashSet<ZLTree<?>>();
 
 	protected ZLTreeAdapter(ListView parent, ZLTree<?> root) {
-		myParent = parent;
+		mListView = parent;
 		Root = root;
 		myItems = new ZLTree[root.getSize() - 1];
 		myOpenItems.add(root);
@@ -39,9 +39,36 @@ public abstract class ZLTreeAdapter extends BaseAdapter implements AdapterView.O
 		}
 	}
 
-	public final void expandOrCollapseTree(ZLTree<?> tree) {
+	/** 滚动上一页, @yf */
+	public void prevPage() {
+		int first = mListView.getFirstVisiblePosition();
+		int last = mListView.getLastVisiblePosition();
+		int pos =  Math.max(first - (last - first), 0);
+
+		ZLTree<?> item = getItem(pos);
+		if (item.hasChildren() && !isOpen(item)) {
+			myOpenItems.add(item);
+			notifyDataSetChanged();
+		}
+
+		mListView.setSelection(pos);
+	}
+
+	/** 滚动下一页, @yf */
+	public void nextPage() {
+		int pos = mListView.getLastVisiblePosition();
+		ZLTree<?> item = getItem(pos);
+		if (item.hasChildren() && !isOpen(item)) {
+			myOpenItems.add(item);
+			notifyDataSetChanged();
+		}
+
+		mListView.setSelection(pos);
+	}
+
+	public final boolean expandOrCollapseTree(ZLTree<?> tree) {
 		if (!tree.hasChildren()) {
-			return;
+			return false;
 		}
 		if (isOpen(tree)) {
 			myOpenItems.remove(tree);
@@ -49,10 +76,15 @@ public abstract class ZLTreeAdapter extends BaseAdapter implements AdapterView.O
 			myOpenItems.add(tree);
 		}
 		notifyDataSetChanged();
+		return true;
 	}
 
 	public final boolean isOpen(ZLTree<?> tree) {
 		return myOpenItems.contains(tree);
+	}
+
+	public final void selectItem(int position) {
+		selectItem(getItem(position));
 	}
 
 	public final void selectItem(ZLTree<?> tree) {
@@ -76,9 +108,9 @@ public abstract class ZLTreeAdapter extends BaseAdapter implements AdapterView.O
 			++index;
 		}
 		if (index > 0) {
-			myParent.setSelection(index - 1);
+			mListView.setSelection(index - 1);
 		}
-		myParent.invalidateViews();
+		mListView.invalidateViews();
 	}
 
 	private int getCount(ZLTree<?> tree) {
